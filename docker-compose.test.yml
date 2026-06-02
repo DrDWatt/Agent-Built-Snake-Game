@@ -1,0 +1,25 @@
+services:
+  mongo-test:
+    image: mongo:7.0
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_test_data:/data/db
+
+  backend-test:
+    build:
+      context: ./backend
+    environment:
+      MONGO_URI: mongodb://mongo-test:27017
+      MONGO_DB_NAME: snake_test
+    command: ["pytest"]
+    depends_on:
+      - mongo-test
+
+  frontend-test:
+    build:
+      context: ./frontend
+    command: ["npm", "test"]
+
+volumes:
+  mongo_test_data:
