@@ -11,7 +11,7 @@ export function GameBoard({ cells, foodColor }) {
           <div key={`${x}-${y}`} className="aspect-square p-[1px]" role="gridcell">
             <div
               className="h-full w-full rounded-[2px]"
-              style={{ backgroundColor: cell === 'food' ? foodColor : cell === 'snake' ? '#22c55e' : 'transparent' }}
+              style={{ backgroundColor: cell === 'food' ? foodColor : cell === 'snake' ? '#2563eb' : 'transparent' }}
             />
           </div>
         )),
